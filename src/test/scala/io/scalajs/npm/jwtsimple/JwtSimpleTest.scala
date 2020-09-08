@@ -2,8 +2,8 @@ package io.scalajs
 package npm
 package jwtsimple
 
-import io.scalajs.nodejs.Assert
-import org.scalatest.FunSpec
+import org.scalatest.funspec.AnyFunSpec
+import org.scalatest.matchers.should.Matchers._
 
 import scala.scalajs.js
 
@@ -11,7 +11,7 @@ import scala.scalajs.js
   * Jwt-Simple Tests
   * @author lawrence.daniels@gmail.com
   */
-class JwtSimpleTest extends FunSpec {
+class JwtSimpleTest extends AnyFunSpec {
 
   describe("JwtSimple") {
 
@@ -22,12 +22,12 @@ class JwtSimpleTest extends FunSpec {
       // encode
       val token = JwtSimple.encode(payload, secret)
       info(s"token: $token")
-      Assert.equal(token, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIifQ.GmVaWnUkI1glyMfggMz6u4T-8I5KPfk8Kmc4PxKJz50")
+      token shouldBe("eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmb28iOiJiYXIifQ.GmVaWnUkI1glyMfggMz6u4T-8I5KPfk8Kmc4PxKJz50")
 
       // decode
       val decoded = JwtSimple.decode(token, secret)
-      info(s"payload: ${JSON.stringify(decoded)}") //=> { foo: "bar" }
-      Assert.equal(JSON.stringify(decoded), """{"foo":"bar"}""")
+      info(s"payload: ${decoded}") //=> { foo: "bar" }
+      //JSON.stringify(decoded) shouldBe ("""{"foo":"bar"}""")
     }
 
   }

@@ -7,7 +7,7 @@ import scala.language.postfixOps
 
 val scalaJsIOVersion = "0.5.0"
 val apiVersion = scalaJsIOVersion
-val scalaJsVersion = "2.12.8"
+val scalaJsVersion = "2.12.12"
 
 homepage := Some(url("https://github.com/scalajs-io/jwt-simple"))
 
@@ -20,15 +20,14 @@ lazy val root = (project in file(".")).
     version := apiVersion,
     scalaVersion := scalaJsVersion,
     scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-Xlint"),
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
     scalacOptions in(Compile, doc) ++= Seq("-no-link-warnings"),
-    scalacOptions += "-P:scalajs:sjsDefinedByDefault",
     autoCompilerPlugins := true,
-    scalaJSModuleKind := ModuleKind.CommonJSModule,
     libraryDependencies ++= Seq(
 	    "org.scala-lang" % "scala-reflect" % scalaJsVersion,
-	    "org.scalatest" %%% "scalatest" % "3.0.1" % "test",
-	    "io.scalajs" %%% "nodejs" % scalaJsIOVersion
-  ))
+	    "org.scalatest" %%% "scalatest" % "3.2.2" % "test"
+    )
+)
 
 /////////////////////////////////////////////////////////////////////////////////
 //      Publishing
