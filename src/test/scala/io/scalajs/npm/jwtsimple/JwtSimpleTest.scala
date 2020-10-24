@@ -27,7 +27,7 @@ class JwtSimpleTest extends AnyFunSpec {
       // decode
       val decoded = JwtSimple.decode(token, secret)
       info(s"payload: ${decoded}") //=> { foo: "bar" }
-      //JSON.stringify(decoded) shouldBe ("""{"foo":"bar"}""")
+      decoded.toString shouldBe ("""{"foo":"bar"}""")
     }
 
   }

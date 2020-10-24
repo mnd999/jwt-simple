@@ -13,6 +13,7 @@ homepage := Some(url("https://github.com/scalajs-io/jwt-simple"))
 
 lazy val root = (project in file(".")).
   enablePlugins(ScalaJSPlugin).
+  enablePlugins(ScalaJSBundlerPlugin).
   settings(
     name := "jwt-simple",
     organization := "io.scalajs.npm",
@@ -26,6 +27,9 @@ lazy val root = (project in file(".")).
     libraryDependencies ++= Seq(
 	    "org.scala-lang" % "scala-reflect" % scalaJsVersion,
 	    "org.scalatest" %%% "scalatest" % "3.2.2" % "test"
+    ),
+    npmDependencies in Test ++= Seq(
+	    "jwt-simple" -> "0.5.6"
     )
 )
 
