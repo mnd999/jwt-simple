@@ -7,7 +7,7 @@ import scala.language.postfixOps
 
 val scalaJsIOVersion = "0.5.0"
 val apiVersion = scalaJsIOVersion
-val scalaJsVersion = "2.12.12"
+val scalaJsVersion = "2.13.3"
 
 homepage := Some(url("https://github.com/scalajs-io/jwt-simple"))
 
